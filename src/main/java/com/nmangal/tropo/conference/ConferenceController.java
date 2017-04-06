@@ -22,13 +22,12 @@ public class ConferenceController {
 
 	@RequestMapping(value = "/conference/", consumes = { "application/json" }, produces = {
 			"application/json" }, method = RequestMethod.POST)
-	public String makeConference(@Valid @RequestBody final Map<String, String> request) {
-		// Put the call in conference
-		String conferenceID = request.get("conferenceID");
-		String conferenceName = request.get("name");
+	public String makeConference(@Valid @RequestBody TropoConferenceSession request) {
 		
+		String conferenceID = request.getSession().getParameters().getConferenceID();
+		String name = request.getSession().getParameters().getName();
 		Tropo tropo = new Tropo();
-		ConferenceAction confAction = tropo.conference(NAME("NeerajMangal"), ID(conferenceID));
+		ConferenceAction confAction = tropo.conference(NAME(name), ID(conferenceID));
 		confAction.and(Do.on(EVENT("join")).and(Do.say("Welcome to Conference")));
 		return tropo.text();
 	}
