@@ -39,7 +39,7 @@
     <dependency>
     <groupId>com.voxeo.tropo</groupId>
     <artifactId>tropo-webapi-java</artifactId>
-    <version>0.4.4</version>
+    <version>0.4.5</version>
     </dependency>
     
 	</dependencies>
