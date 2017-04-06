@@ -22,7 +22,7 @@ public class ConferenceController {
 
 	@RequestMapping(value = "/conference/", consumes = { "application/json" }, produces = {
 			"application/json" }, method = RequestMethod.POST)
-	public String makeConference(@valid @RequestBody final Map<String, String> request) {
+	public String makeConference(@Valid @RequestBody final Map<String, String> request) {
 		// Put the call in conference
 		String conferenceID = request.get("conferenceID");
 		String conferenceName = request.get("name");
