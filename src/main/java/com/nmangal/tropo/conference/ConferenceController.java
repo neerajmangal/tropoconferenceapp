@@ -3,6 +3,7 @@ package com.nmangal.tropo.conference;
 import static com.voxeo.tropo.Key.ID;
 import static com.voxeo.tropo.Key.NAME;
 import static com.voxeo.tropo.Key.EVENT;
+import static com.voxeo.tropo.Key.JOIN_PROMPT;
 
 import java.util.Map;
 
@@ -27,7 +28,7 @@ public class ConferenceController {
 		String conferenceID = request.getSession().getParameters().getConferenceID();
 		String name = request.getSession().getParameters().getName();
 		Tropo tropo = new Tropo();
-		ConferenceAction confAction = tropo.conference(NAME(name), ID(conferenceID));
+		ConferenceAction confAction = tropo.conference(NAME(name), ID(conferenceID), JOIN_PROMPT("Welcome to Conference"));
 		confAction.and(Do.on(EVENT("join")).and(Do.say("Welcome to Conference")));
 		return tropo.text();
 	}
