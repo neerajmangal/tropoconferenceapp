@@ -27,9 +27,13 @@ public class ConferenceController {
 		
 		String conferenceID = request.getSession().getParameters().getConferenceID();
 		String name = request.getSession().getParameters().getName();
+		System.out.println("ConferenceID="+conferenceID);
+		System.out.println("ConferenceName="+name);
+		
 		Tropo tropo = new Tropo();
 		ConferenceAction confAction = tropo.conference(NAME(name), ID(conferenceID), JOIN_PROMPT("Welcome to Conference"));
 		confAction.and(Do.on(EVENT("join")).and(Do.say("Welcome to Conference")));
+		System.out.println("Tropo text="+tropo.text());
 		return tropo.text();
 	}
 
