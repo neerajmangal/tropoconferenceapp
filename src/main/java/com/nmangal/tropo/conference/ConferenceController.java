@@ -35,6 +35,7 @@ public class ConferenceController {
 		System.out.println("ConferenceID="+conferenceID);
 		System.out.println("ConferenceName="+name);
 		System.out.println("requestURL="+httpServletRequest.getRequestURL());
+		System.out.println("requestURL="+httpServletRequest.getRequestURI());
 		
 		Tropo tropo = new Tropo();
 		ConferenceAction confAction = tropo.conference(NAME(name), ID(conferenceID), JOIN_PROMPT("Welcome to Conference"));
